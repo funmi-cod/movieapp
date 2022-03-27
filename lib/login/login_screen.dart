@@ -27,13 +27,9 @@ class _LogInScreenState extends State<LogInScreen> {
   final _emailTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
 
-<<<<<<< HEAD
   //final _focusEmail = FocusNode();
   //final _focusPassword = FocusNode();
-=======
-  final _focusEmail = FocusNode();
-  final _focusPassword = FocusNode();
->>>>>>> 05b53130005a2696f02749b48478b846a35509d6
+
 
   bool _isProcessing = false;
 
@@ -51,7 +47,7 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-<<<<<<< HEAD
+
     return Scaffold(
       body: FutureBuilder(
         future: _initializeFirebase(),
@@ -150,113 +146,6 @@ class _LogInScreenState extends State<LogInScreen> {
             CustomIndicator();
         },
       ),
-
-=======
-    return GestureDetector(
-      onTap: () {
-        _focusEmail.unfocus();
-        _focusPassword.unfocus();
-      },
-      child: Scaffold(
-        body: FutureBuilder(
-          future: _initializeFirebase(),
-          builder: (context, snapshot){
-            if (snapshot.connectionState == ConnectionState.done) {
-              return SafeArea(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding:  EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        SizedBox(height: SizeConfig.screenHeight * 0.10,),
-                        Text("Welcome, \n  Log in here", style: headingStyle,),
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: SizeConfig.screenHeight * 0.10,
-                            ),
-                            Form(
-                              key: _formKey,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Text(
-                                    'E-mail',
-                                    style: labelTextStyle,
-                                  ),
-                                  SizedBox(
-                                    height: SizeConfig.screenHeight * 0.02,
-                                  ),
-                                  buildEmailTextFormField(),
-                                  SizedBox(
-                                    height: SizeConfig.screenHeight * 0.02,
-                                  ),
-                                  Text(
-                                    'Password',
-                                    style: labelTextStyle,
-                                  ),
-                                  SizedBox(
-                                    height: SizeConfig.screenHeight * 0.02,
-                                  ),
-                                  buildPasswordTextFormField(),
-                                  SizedBox(
-                                    height: SizeConfig.screenHeight * 0.05,
-                                  ),
-                                  _isProcessing? CustomIndicator()
-                                      :DefaultButton(
-                                    text: 'Log In',
-                                    press: () async{
-                                      _focusEmail.unfocus();
-                                      _focusPassword.unfocus();
-                                      if(_formKey.currentState!.validate()){
-                                        setState(() {
-                                          _isProcessing = true;
-                                        });
-                                        User? user = await FireAuth.signInUsingEmailPassword(
-                                            email: _emailTextController.text,
-                                            password: _passwordTextController.text);
-                                        setState(() {
-                                          _isProcessing = false;
-                                        });
-                                        if (user != null) {
-                                          Navigator.of(context).pushNamed(HomePage.routeName,arguments: user);
-                                        }
-                                      }
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: SizeConfig.screenHeight * 0.05,
-                            ),
-                            RichText(text: TextSpan(
-                              text: "Don\'t have an account? ", style: textStyle,
-                              children: [
-                                TextSpan(text: 'Sign In', style: textSpanStyle,
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () => Navigator.pushNamed(context, SignInScreen.routeName),
-                                ),
-                              ],
-                            ),
-                            ),
-                            SizedBox(height: SizeConfig.screenHeight * 0.04,),
-                          ],
-                        ),
-
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            }
-            return CustomIndicator();
-          },
-        ),
-
-      ),
->>>>>>> 05b53130005a2696f02749b48478b846a35509d6
     );
   }
 
@@ -264,11 +153,8 @@ class _LogInScreenState extends State<LogInScreen> {
     obscureText: true,
     textAlign: TextAlign.center,
     controller: _passwordTextController,
-<<<<<<< HEAD
+
     //focusNode: _focusPassword,
-=======
-    focusNode: _focusPassword,
->>>>>>> 05b53130005a2696f02749b48478b846a35509d6
     validator: (value) => Validator.validatePassword(password: value!),
 
     decoration: passInputDecoration,
@@ -278,11 +164,7 @@ class _LogInScreenState extends State<LogInScreen> {
     keyboardType: TextInputType.emailAddress,
     textAlign: TextAlign.center,
     controller:  _emailTextController,
-<<<<<<< HEAD
    // focusNode: _focusEmail,
-=======
-    focusNode: _focusEmail,
->>>>>>> 05b53130005a2696f02749b48478b846a35509d6
     validator: (value) => Validator.validateEmail(email: value!),
     decoration: emailInputDecoration,
   );

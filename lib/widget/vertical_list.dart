@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import 'package:flutter/cupertino.dart';
-=======
->>>>>>> 05b53130005a2696f02749b48478b846a35509d6
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -43,10 +40,8 @@ class VerticalList extends StatelessWidget {
                           height: getProportionateScreenHeight(150),
                           width: getProportionateScreenWidth(120),
                           decoration: BoxDecoration(
-<<<<<<< HEAD
                             borderRadius: const BorderRadius.only(topLeft: Radius.circular(5), bottomLeft: Radius.circular(5)),
-=======
->>>>>>> 05b53130005a2696f02749b48478b846a35509d6
+
                               image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: NetworkImage(model[index].posterurl!),
