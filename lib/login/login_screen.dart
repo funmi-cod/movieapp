@@ -55,197 +55,99 @@ class _LogInScreenState extends State<LogInScreen> {
       body: FutureBuilder(
         future: _initializeFirebase(),
         builder: (context, snapshot){
-          switch(snapshot.connectionState){
-            case ConnectionState.done:
-              final user = FirebaseAuth.instance.currentUser;
-              if(user != null){
-                return const Text('Homepage Verified');
-
-              }else{
-                return SafeArea(
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          SizedBox(height: SizeConfig.screenHeight * 0.10,),
-                          Text("Welcome, \n  Log in here", style: headingStyle,),
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: SizeConfig.screenHeight * 0.10,
-                              ),
-                              Form(
-                                key: _formKey,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                                  children: [
-                                    Text(
-                                      'E-mail',
-                                      style: labelTextStyle,
-                                    ),
-                                    SizedBox(
-                                      height: SizeConfig.screenHeight * 0.02,
-                                    ),
-                                    buildEmailTextFormField(),
-                                    SizedBox(
-                                      height: SizeConfig.screenHeight * 0.02,
-                                    ),
-                                    Text(
-                                      'Password',
-                                      style: labelTextStyle,
-                                    ),
-                                    SizedBox(
-                                      height: SizeConfig.screenHeight * 0.02,
-                                    ),
-                                    buildPasswordTextFormField(),
-                                    SizedBox(
-                                      height: SizeConfig.screenHeight * 0.05,
-                                    ),
-                                    _isProcessing? CustomIndicator()
-                                        :DefaultButton(
-                                      text: 'Log In',
-                                      press: () async{
-                                        //_focusEmail.unfocus();
-                                        //_focusPassword.unfocus();
-                                        if(_formKey.currentState!.validate()){
-                                          setState(() {
-                                            _isProcessing = true;
-                                          });
-                                          User? user = await FireAuth.signInUsingEmailPassword(
-                                              email: _emailTextController.text,
-                                              password: _passwordTextController.text);
-                                          setState(() {
-                                            _isProcessing = false;
-                                          });
-                                          if (user != null) {
-                                            Navigator.of(context).pushNamed(HomePage.routeName,arguments: user);
-                                          }
-                                        }
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: SizeConfig.screenHeight * 0.05,
-                              ),
-                              RichText(text: TextSpan(
-                                text: "Don\'t have an account? ", style: textStyle,
+          if (snapshot.connectionState == ConnectionState.done) {
+              return SafeArea(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding:  EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        SizedBox(height: SizeConfig.screenHeight * 0.10,),
+                        Text("Welcome, \n  Log in here", style: headingStyle,),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: SizeConfig.screenHeight * 0.10,
+                            ),
+                            Form(
+                              key: _formKey,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
-                                  TextSpan(text: 'Sign In', style: textSpanStyle,
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () => Navigator.pushNamed(context, SignInScreen.routeName),
+                                  Text(
+                                    'E-mail',
+                                    style: labelTextStyle,
+                                  ),
+                                  SizedBox(
+                                    height: SizeConfig.screenHeight * 0.02,
+                                  ),
+                                  buildEmailTextFormField(),
+                                  SizedBox(
+                                    height: SizeConfig.screenHeight * 0.02,
+                                  ),
+                                  Text(
+                                    'Password',
+                                    style: labelTextStyle,
+                                  ),
+                                  SizedBox(
+                                    height: SizeConfig.screenHeight * 0.02,
+                                  ),
+                                  buildPasswordTextFormField(),
+                                  SizedBox(
+                                    height: SizeConfig.screenHeight * 0.05,
+                                  ),
+                                  _isProcessing? CustomIndicator()
+                                      :DefaultButton(
+                                    text: 'Log In',
+                                    press: () async{
+                                      //_focusEmail.unfocus();
+                                      //_focusPassword.unfocus();
+                                      if(_formKey.currentState!.validate()){
+                                        setState(() {
+                                          _isProcessing = true;
+                                        });
+                                        User? user = await FireAuth.signInUsingEmailPassword(
+                                            email: _emailTextController.text,
+                                            password: _passwordTextController.text);
+                                        setState(() {
+                                          _isProcessing = false;
+                                        });
+                                        if (user != null) {
+                                          Navigator.of(context).pushNamed(HomePage.routeName,arguments: user);
+                                        }
+                                      }
+                                    },
                                   ),
                                 ],
                               ),
-                              ),
-                              SizedBox(height: SizeConfig.screenHeight * 0.04,),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: SizeConfig.screenHeight * 0.05,
+                            ),
+                            RichText(text: TextSpan(
+                              text: "Don\'t have an account? ", style: textStyle,
+                              children: [
+                                TextSpan(text: 'Sign In', style: textSpanStyle,
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () => Navigator.pushNamed(context, SignInScreen.routeName),
+                                ),
+                              ],
+                            ),
+                            ),
+                            SizedBox(height: SizeConfig.screenHeight * 0.04,),
+                          ],
+                        ),
 
-                        ],
-                      ),
+                      ],
                     ),
                   ),
-                );
-              }
-              default:
-                return const CustomIndicator();
-          }
-          // if (snapshot.connectionState == ConnectionState.done) {
-          //   return SafeArea(
-          //     child: SingleChildScrollView(
-          //       child: Padding(
-          //         padding:  EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
-          //         child: Column(
-          //           crossAxisAlignment: CrossAxisAlignment.stretch,
-          //           children: [
-          //             SizedBox(height: SizeConfig.screenHeight * 0.10,),
-          //             Text("Welcome, \n  Log in here", style: headingStyle,),
-          //             Column(
-          //               children: [
-          //                 SizedBox(
-          //                   height: SizeConfig.screenHeight * 0.10,
-          //                 ),
-          //                 Form(
-          //                   key: _formKey,
-          //                   child: Column(
-          //                     crossAxisAlignment: CrossAxisAlignment.stretch,
-          //                     children: [
-          //                       Text(
-          //                         'E-mail',
-          //                         style: labelTextStyle,
-          //                       ),
-          //                       SizedBox(
-          //                         height: SizeConfig.screenHeight * 0.02,
-          //                       ),
-          //                       buildEmailTextFormField(),
-          //                       SizedBox(
-          //                         height: SizeConfig.screenHeight * 0.02,
-          //                       ),
-          //                       Text(
-          //                         'Password',
-          //                         style: labelTextStyle,
-          //                       ),
-          //                       SizedBox(
-          //                         height: SizeConfig.screenHeight * 0.02,
-          //                       ),
-          //                       buildPasswordTextFormField(),
-          //                       SizedBox(
-          //                         height: SizeConfig.screenHeight * 0.05,
-          //                       ),
-          //                       _isProcessing? CustomIndicator()
-          //                           :DefaultButton(
-          //                         text: 'Log In',
-          //                         press: () async{
-          //                           //_focusEmail.unfocus();
-          //                           //_focusPassword.unfocus();
-          //                           if(_formKey.currentState!.validate()){
-          //                             setState(() {
-          //                               _isProcessing = true;
-          //                             });
-          //                             User? user = await FireAuth.signInUsingEmailPassword(
-          //                                 email: _emailTextController.text,
-          //                                 password: _passwordTextController.text);
-          //                             setState(() {
-          //                               _isProcessing = false;
-          //                             });
-          //                             if (user != null) {
-          //                               Navigator.of(context).pushNamed(HomePage.routeName,arguments: user);
-          //                             }
-          //                           }
-          //                         },
-          //                       ),
-          //                     ],
-          //                   ),
-          //                 ),
-          //                 SizedBox(
-          //                   height: SizeConfig.screenHeight * 0.05,
-          //                 ),
-          //                 RichText(text: TextSpan(
-          //                   text: "Don\'t have an account? ", style: textStyle,
-          //                   children: [
-          //                     TextSpan(text: 'Sign In', style: textSpanStyle,
-          //                       recognizer: TapGestureRecognizer()
-          //                         ..onTap = () => Navigator.pushNamed(context, SignInScreen.routeName),
-          //                     ),
-          //                   ],
-          //                 ),
-          //                 ),
-          //                 SizedBox(height: SizeConfig.screenHeight * 0.04,),
-          //               ],
-          //             ),
-          //
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   );
-          // }
-          // return Center(child: SizedBox(child: Text('Not working'),));
-          //   CustomIndicator();
+                ),
+              );
+            }
+            return Center(child: SizedBox(child: Text('Not working'),));
+              //CustomIndicator();
+
         },
       ),
     );
@@ -257,7 +159,7 @@ class _LogInScreenState extends State<LogInScreen> {
     controller: _passwordTextController,
 
     //focusNode: _focusPassword,
-    // validator: (value) => Validator.validatePassword(password: value!),
+    validator: (value) => Validator.validatePassword(password: value!),
 
     decoration: passInputDecoration,
   );
@@ -267,7 +169,7 @@ class _LogInScreenState extends State<LogInScreen> {
     textAlign: TextAlign.center,
     controller:  _emailTextController,
    // focusNode: _focusEmail,
-   //  validator: (value) => Validator.validateEmail(email: value!),
+    validator: (value) => Validator.validateEmail(email: value!),
     decoration: emailInputDecoration,
   );
 }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:movieapp/home/movie_list.dart';
 
 import '../components/constants.dart';
 import '../components/detail_card.dart';
@@ -22,10 +23,6 @@ class Body extends StatelessWidget {
   final BuildContext context;
   final List<MovieModel> model;
 
-  String timeFormat(String formatTime) {
-    DateTime time = DateTime.parse(formatTime);
-    return DateFormat.Hms().format(time);
-  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -60,9 +57,12 @@ class Body extends StatelessWidget {
                 'Popular',
                 style: headingStyle,
               ),
-              const DetailCard(
-                text: 'view all',
-                color: kBgColor,
+              GestureDetector(
+                //ontap: () => Navigator.of(context).push(MaterialPageRoute(builder:(context) => MovieListPage(movie: model[index],))),
+                child: const DetailCard(
+                  text: 'view all',
+                  color: kBgColor,
+                ),
               ),
             ],
           ),
