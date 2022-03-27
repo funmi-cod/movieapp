@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:movieapp/blocs/movie_bloc/movie_bloc.dart';
 import 'package:movieapp/models/movie_model.dart';
 
 import '../components/constants.dart';
@@ -68,7 +69,9 @@ class _MovieDetailsState extends State<MovieDetails> {
                       onTap: (){
                         setState(() {
                           isSelected = true;
-
+                          // if(state is AddMovieToCartState) {
+                          //   cartItem.add(widget.movie.id!);
+                          // }
                         });
                       },
                         child: isSelected ?

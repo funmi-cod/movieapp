@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movieapp/login/login_screen.dart';
+import 'blocs/movie_bloc/movie_bloc.dart';
 import 'routes.dart';
-import 'package:movieapp/home/navigation.dart';
+//import 'package:movieapp/home/navigation.dart';
 
 //import 'package:movieapp/login/login_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+
+  runApp(
+      BlocProvider(
+      create: (BuildContext context) => MovieBloc(),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +30,7 @@ class MyApp extends StatelessWidget {
       //home: SignInScreen(),
       // we ues routeName so that we don't need to remember the name
 
-      initialRoute: NavigationScreen.routeName,
+      initialRoute: LogInScreen.routeName,
       routes: routes,
     );
   }

@@ -64,7 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
-<<<<<<< HEAD
   curved_navigation_bar:
     dependency: "direct main"
     description:
@@ -72,8 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-=======
->>>>>>> 05b53130005a2696f02749b48478b846a35509d6
   dio:
     dependency: "direct main"
     description:

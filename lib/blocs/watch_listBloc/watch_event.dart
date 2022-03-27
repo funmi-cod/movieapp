@@ -1,6 +1,6 @@
-// Get the movie list
-part of 'movie_bloc.dart';
 
+// Get the movie list
+part of 'watch_list_bloc.dart';
 
 abstract class MovieEvent extends Equatable{
   const MovieEvent();
@@ -13,14 +13,12 @@ abstract class MovieEvent extends Equatable{
 class GetMovieList extends MovieEvent{}
 
 class AddMovieToCartEvent extends MovieEvent{
-  List<MovieModel> cartItems;
+  final MovieModel cartItems;
   AddMovieToCartEvent(this.cartItems);
 }
 
 class DeleteMovieFromCartEvent extends MovieEvent {
-  List<MovieModel> cartItems;
-  int index;
-  DeleteMovieFromCartEvent(this.cartItems, this.index);
+  final MovieModel cartItems;
+
+  const DeleteMovieFromCartEvent(this.cartItems);
 }
-
-

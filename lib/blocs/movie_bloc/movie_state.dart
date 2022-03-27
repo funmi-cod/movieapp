@@ -17,17 +17,6 @@ class MovieLoaded extends MovieState{
 }
 
 
-class AddMovieToCartState extends MovieState{
-  final List<MovieModel> movieList;
-  const AddMovieToCartState(this.movieList);
-}
-
-class DeleteMovieFromCartState extends MovieState{
-  final List<MovieModel> movieList;
-  const DeleteMovieFromCartState(this.movieList);
-}
-
-
 class MovieError extends MovieState{
   final String? message;
   const MovieError(this.message);

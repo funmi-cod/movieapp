@@ -3,7 +3,7 @@ import 'package:movieapp/resources/api_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:movieapp/models/movie_model.dart';
 
-part 'movie.event.dart';
+part 'movie_event.dart';
 part 'movie_state.dart';
 
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
