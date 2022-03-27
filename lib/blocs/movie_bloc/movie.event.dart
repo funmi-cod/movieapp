@@ -9,6 +9,7 @@ abstract class MovieEvent extends Equatable{
   List<Object> get props =>[];
 }
 
+<<<<<<< HEAD
 class GetMovieList extends MovieEvent{}
 
 class AddMovieToCartEvent extends MovieEvent{
@@ -21,3 +22,6 @@ class DeleteMovieFromCartEvent extends MovieEvent {
   int index;
   DeleteMovieFromCartEvent(this.cartItems, this.index);
 }
+=======
+class GetMovieList extends MovieEvent{}
+>>>>>>> 05b53130005a2696f02749b48478b846a35509d6

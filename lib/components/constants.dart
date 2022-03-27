@@ -21,7 +21,19 @@ final socialTextStyle = GoogleFonts.openSans(fontSize: getProportionateScreenWid
 final textSpanStyle = GoogleFonts.openSans(fontSize: getProportionateScreenWidth(15), color: kTextColor,fontWeight: FontWeight.w300);
 
 final btnTextStyle = GoogleFonts.openSans(fontSize: getProportionateScreenWidth(17), color: kBgColor,fontWeight: FontWeight.bold);
+<<<<<<< HEAD
 
+=======
+// form Error
+
+final RegExp emailValidatorRegExp =
+    RegExp(r"^[a-zA-z0-9.]+@[a-zA-z0-9]+\.[a-zA-Z.]+");
+
+const String kEmailNullError = "Please enter your email";
+const String kInvalidEmailError = "Please enter a valid email";
+const String kPassNullError = "Please enter your password";
+const String kShortPassError= "Password is too short";
+>>>>>>> 05b53130005a2696f02749b48478b846a35509d6
 
 
 // email form decoration

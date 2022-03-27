@@ -4,7 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:movieapp/blocs/movie_bloc/movie_bloc.dart';
+<<<<<<< HEAD
 import 'package:movieapp/home/movie_cart.dart';
+=======
+>>>>>>> 05b53130005a2696f02749b48478b846a35509d6
 import '../components/constants.dart';
 import '../components/size_config.dart';
 import '../home/body.dart';
@@ -22,8 +25,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final MovieBloc _bloc = MovieBloc();
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 05b53130005a2696f02749b48478b846a35509d6
   String timeFormat(String formatTime) {
     DateTime time = DateTime.parse(formatTime);
     return DateFormat.Hms().format(time);
@@ -43,6 +49,16 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: kBgColor,
         elevation: 0,
+<<<<<<< HEAD
+=======
+        leading: Padding(
+          padding:  EdgeInsets.all(getProportionateScreenWidth(10)),
+          child: const FaIcon(
+            FontAwesomeIcons.alignJustify,
+            color: kTextColor,
+          ),
+        ),
+>>>>>>> 05b53130005a2696f02749b48478b846a35509d6
         centerTitle: true,
         title: Text("Movies", style: headingStyle,
         ),
@@ -50,7 +66,11 @@ class _HomePageState extends State<HomePage> {
           IconButton(
               onPressed: () {},
               icon: const FaIcon(
+<<<<<<< HEAD
                 FontAwesomeIcons.signOutAlt,
+=======
+                FontAwesomeIcons.bell,
+>>>>>>> 05b53130005a2696f02749b48478b846a35509d6
                 color: kTextColor,
               ))
         ],
@@ -86,7 +106,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05b53130005a2696f02749b48478b846a35509d6
     );
   }
 
