@@ -10,6 +10,5 @@ final Map<String, WidgetBuilder> routes = {
   LogInScreen.routeName: (context)  => const LogInScreen(),
   HomePage.routeName: (context) => const HomePage(),
   MovieCart.routeName:(context) => const MovieCart(),
-  NavigationScreen.routeName:(context) => const NavigationScreen(),
-  //MovieDetails.routeName: (context) => MovieDetails(),
+  NavigationScreen.routeName: (context) => NavigationScreen(),
 };

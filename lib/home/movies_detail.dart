@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:movieapp/blocs/movie_bloc/movie_bloc.dart';
+import 'package:movieapp/blocs/watch_listBloc/watch_list_bloc.dart';
 import 'package:movieapp/models/movie_model.dart';
 
 import '../components/constants.dart';
@@ -73,6 +74,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                           //   cartItem.add(widget.movie.id!);
                           // }
                         });
+                        BlocProvider.of<WatchListBloc>(context).add(AddMovieToCartEvent(widget.movie));
                       },
                         child: isSelected ?
                         const FaIcon(FontAwesomeIcons.solidBookmark,

@@ -5,7 +5,9 @@ import 'package:movieapp/components/custom_indicator.dart';
 import 'package:movieapp/components/default_btn.dart';
 import 'package:movieapp/components/size_config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:movieapp/home/home_page.dart';
 import 'package:movieapp/home/navigation.dart';
+
 
 import '../../auth/fire_auth.dart';
 
@@ -70,7 +72,7 @@ class _SignInFormState extends State<SignInForm> {
                 });
                 if (user != null) {
                   print('ready');
-                  Navigator.of(context).pushNamed(NavigationScreen.routeName, arguments: user);
+                  Navigator.of(context).pushNamed(NavigationScreen.routeName);
                 }
               }
             },

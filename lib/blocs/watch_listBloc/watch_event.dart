@@ -2,23 +2,20 @@
 // Get the movie list
 part of 'watch_list_bloc.dart';
 
-abstract class MovieEvent extends Equatable{
-  const MovieEvent();
+abstract class WatchListEvent extends Equatable{
+  const WatchListEvent();
 
   @override
   List<Object> get props =>[];
 }
 
 
-class GetMovieList extends MovieEvent{}
-
-class AddMovieToCartEvent extends MovieEvent{
+class AddMovieToCartEvent extends WatchListEvent{
   final MovieModel cartItems;
   AddMovieToCartEvent(this.cartItems);
 }
 
-class DeleteMovieFromCartEvent extends MovieEvent {
+class DeleteMovieFromCartEvent extends WatchListEvent {
   final MovieModel cartItems;
-
   const DeleteMovieFromCartEvent(this.cartItems);
 }

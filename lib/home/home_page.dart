@@ -2,16 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:movieapp/blocs/movie_bloc/movie_bloc.dart';
+import 'package:movieapp/sign_in/sign_in_screen.dart';
 import '../components/constants.dart';
+import '../components/custom_indicator.dart';
 import '../components/size_config.dart';
 import '../home/body.dart';
+import 'movie_cart.dart';
 
 
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key,}) : super(key: key);
+
 
   static String routeName = "/homepage";
   @override
@@ -20,6 +24,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final MovieBloc _bloc = MovieBloc();
+
+  bool _isSignOut = false;
 
   @override
   void initState() {
@@ -41,7 +47,17 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () async{
+                _isSignOut? CustomIndicator:setState(() {
+                  _isSignOut = true;
+                });
+                await FirebaseAuth.instance.signOut();
+                setState(() {
+                  _isSignOut = false;
+                });
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context)=> SignInScreen()));
+              },
               icon: const FaIcon(
                 FontAwesomeIcons.signOutAlt,
 
@@ -79,8 +95,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+
     );
   }
+
 
   Center _buildLoading() => const Center(child: CircularProgressIndicator(color: kTextColor,));
 }

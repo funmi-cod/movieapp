@@ -1,8 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:movieapp/home/movie_list.dart';
 
 import '../components/constants.dart';
 import '../components/detail_card.dart';
@@ -58,7 +56,6 @@ class Body extends StatelessWidget {
                 style: headingStyle,
               ),
               GestureDetector(
-                //ontap: () => Navigator.of(context).push(MaterialPageRoute(builder:(context) => MovieListPage(movie: model[index],))),
                 child: const DetailCard(
                   text: 'view all',
                   color: kBgColor,
